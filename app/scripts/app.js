@@ -12,7 +12,8 @@ angular
   .module('analyzerClientWebappApp', [
     'ngCookies',
     'ngRoute',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'restangular'
   ])
   .config(function ($routeProvider) {
     $routeProvider

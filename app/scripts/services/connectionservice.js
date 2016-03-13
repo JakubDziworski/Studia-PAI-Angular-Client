@@ -17,7 +17,7 @@ var CONNECTION_STATUS = {
 };
 
 angular.module('analyzerClientWebappApp')
-  .service('ConnectionService', function ($q) {
+  .service('ConnectionService', function ($q,Restangular) {
 
     this.getDefaultConnectionStatus = function () {
       return CONNECTION_STATUS.NOT_STARTED;
@@ -39,9 +39,13 @@ angular.module('analyzerClientWebappApp')
 
     this.establishConnection = function (webServiceAddress) {
       var deffered = $q.defer();
-      setTimeout(function () {
-        deffered.resolve(CONNECTION_STATUS.UNABLE_TO_CONNECT);
-      }, 3000);
+      var customers = Restangular.oneUrl('posts','http://jsonplaceholder.typicode.com');
+      customers.get().then(function(customerz) {
+        alert(customerz);
+        deffered.resolve(CONNECTION_STATUS.CONNECTED);
+      }, function() {
+        deffered.resolve(CONNECTION_STATUS.UNABLE_TO_CONNECT)
+      });
       return deffered.promise;
     }
   });
