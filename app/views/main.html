@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1>Hello analyzer</h1>
+  <p class="lead">
+    Web application analyzer
+  </p>
+  <p>
+  <input class="input-lg text-center" type="text" ng-model="webServiceAddress">
+  </p>
+    <a ng-class="'btn btn-lg btn-alert btn-'+getBtnStatus()" ng-click="connect()" ng-href="#/">
+    {{getBtnText()}}
+    <span class="glyphicon glyphicon-alert"></span></a>
+  <div ng-controller="MapsCtrl">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+  </div>>
+</div>
